@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Deepfake Detector Presentation - Final</title>
+
+        <link rel="stylesheet" href="dist/reset.css">
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/theme/black.css">
+        <link rel="stylesheet" href="plugin/highlight/monokai.css">
+        
+        <style>
+            /* Custom CSS for presentation clarity */
+
+            .reveal section h2 {
+                color: #58a6ff; /* Highlight major headings */
+            }
+            .reveal section h3 {
+                color: #79c0ff; /* Highlight sub-headings */
+            }
+            .reveal .row {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                align-items: flex-start;
+                margin-top: 20px;
+            }
+            .reveal .col-6 {
+                width: 50%;
+                padding: 0 20px;
+                text-align: left;
+            }
+            .report-info {
+                font-size: 0.8em;
+                margin-top: 15px;
+                text-align: center;
+                border: 1px solid #30363d;
+                padding: 10px;
+                border-radius: 5px;
+            }
+            .highlight { color: #238636; font-weight: bold; }
+
+            /* CORRECTED CSS for the Amuse Me slide */
+            .challenge-container {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start; /* Aligns content to the top of the slide */
+                position: relative; 
+                width: 90%;
+                margin: 20px auto 0; /* Centered, higher margin */
+            }
+
+            .challenge-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0 10px;
+            }
+
+            .challenge-img {
+                max-width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+                border: 5px solid #79c0ff;
+                box-shadow: 0 0 15px rgba(121, 192, 255, 0.5);
+            }
+
+            .challenge-reveal {
+                font-size: 1.5em;
+                padding: 8px 15px;
+                border-radius: 5px;
+                color: white;
+            }
+            .real-box { background-color: #238636; border: 3px solid white; }
+            .fake-box { background-color: #d73a49; border: 3px solid white; }
+            
+            /* Custom Background Style for a more high-tech feel */
+            .deepfake-bg {
+                background-color: #0d1117;
+                background-image: radial-gradient(circle at 50% 50%, rgba(35, 134, 54, 0.1), transparent);
+            }
+
+            /* Custom text color for a specific slide */
+            .white-text h3, .white-text p, .white-text li {
+                color: white; /* Ensure text is visible over complex backgrounds */
+            }
+        </style>
+    </head>
+    <body class="deepfake-bg">
+        <div class="reveal">
+            <div class="slides">
+                
+                <section data-transition="zoom" 
+                         data-background-video="assets/digital_noise_loop.mp4" 
+                         data-background-video-loop 
+                         data-background-video-muted 
+                         data-background-opacity="0.2">
+                    <h2 style="margin-top: -80px;">CAN YOU SPOT THE DEEPFAKE?</h2>
+                    <p style="margin-bottom: 20px;">Which one is fake?</p>
+                    
+                    <div class="challenge-container">
+                        
+                        <div class="challenge-item">
+                            <img class="challenge-img" src="pic/Fake.png" alt="Image A" />
+                            <div class="challenge-reveal fake-box fragment fade-in" data-fragment-index="1">
+                                A: FAKE
+                            </div>
+                        </div>
+                        
+                        <div class="challenge-item">
+                            <img class="challenge-img" src="pic/Real.png" alt="Image B" />
+                            <div class="challenge-reveal real-box fragment fade-in" data-fragment-index="1">
+                                B: REAL
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <h3 class="fragment pulse" data-fragment-index="2" style="color: #d73a49; margin-top: 20px; font-size: 0.8em;">The Problem: Subtlety Requires Machine Intelligence.</h3>
+                </section>
+
+                <section data-transition="fade" data-background-color="#0d1117">
+                    <h2>Deepfake Detection & Authentication System</h2>
+                    <p>A Metric Learning Approach for Image Integrity</p>
+                    <br>
+                    <div class="report-info">
+                        <p>UNIVERSITI TUNKU ABDUL RAHMAN </p>
+                        <p>Machine Learning Assignment</p>
+                        <p><small>Chin Lok Bin, Lew Jia Jia, Tham Min Cong</small></p>
+                    </div>
+                </section>
+
+                <section data-transition="slide-up" data-background-image="assets/abstract_pattern.png" data-background-opacity="0.1">
+                    <h2 style="color: #4CAF50; margin-bottom: 10px;">🥸 WHAT IS DEEPFAKE IMAGE DETECTION?</h2>
+
+                    <div style="font-size: 0.9em; margin: 10px 0; text-align: center;"> 
+                        <ul style="list-style: none; padding: 0; display: inline-block; text-align: left;">
+                            <li class="fragment fade-in-then-semi-out" style="color: #4CAF50;"><strong>Definition:</strong> Technique used to identify images artificially generated or manipulated by AI.</li>
+                            <li class="fragment" style="color: #F44336;"><strong>Core Goal:</strong> To distinguish between <span style="text-decoration: underline; color: #4CAF50;">Authentic (Real)</span> content and <span style="text-decoration: underline; color: #F44336;">Manipulated (Fake)</span> content.</li>
+                        </ul>
+                    </div>
+                    <div style="display: flex; justify-content: space-around; align-items: center; margin-top: 15px;">
+                        
+                        <div class="fragment grow" style="text-align: center; border: 3px solid #4CAF50; padding: 5px; border-radius: 10px; width: 40%;">
+                            <h3 style="color: #4CAF50; margin-top: 5px; margin-bottom: 5px;">✅ REAL IMAGE</h3>
+                            <div style="background-color: #f0fff0; height: 120px; display: flex; align-items: center; justify-content: center; border: 1px dashed #4CAF50; color: #4CAF50; font-weight: bold; font-size: 1.2em;">
+                                AUTHENTIC
+                            </div>
+                            <p style="font-size: 0.7em; margin-top: 5px; color: #4CAF50;">(Authentic Visual Content)</p>
+                        </div>
+
+                        <div class="fragment grow" style="text-align: center; border: 3px solid #F44336; padding: 5px; border-radius: 10px; width: 40%;">
+                            <h3 style="color: #F44336; margin-top: 5px; margin-bottom: 5px;">❌ FAKE IMAGE</h3>
+                            <div style="background-color: #fff0f0; height: 120px; display: flex; align-items: center; justify-content: center; border: 1px dashed #F44336; color: #F44336; font-weight: bold; font-size: 1.2em;">
+                                MANIPULATED
+                            </div>
+                            <p style="font-size: 0.7em; margin-top: 5px; color: #F44336;">(AI-Generated or Manipulated)</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-transition="concave" data-background-color="#00213d">
+                    <h3>🤔WHY IS DEEPFAKE DETECTION CRITICAL NOW?</h3>
+                    <ul style="text-align: left; max-width: 800px; margin: auto;">
+                        <li class="fragment fade-in"><strong>Rapid Advancement of Generative Models:</strong> <strong style="color: #FFC0CB;">Generative AI (GANs/Diffusion)</strong> and <strong style="color: #FFC0CB;">Diffusion Models </strong>are advancing quickly.</li>
+                        <br>
+                        <li class="fragment fade-in"><strong>Hyper-Realism:</strong> AI-generated images are becoming <strong style="color: #FFC0CB;">increasingly realistic</strong> making it difficult for humans to distinguish between real and fake content.</li>
+                    </ul>
+                </section>
+
+                <section data-transition="zoom" data-background-color="#3d0007" class="white-text">
+                    <h3>🥶RISKS OF DEEPFAKE IMAGES</h3>
+                    <ul style="text-align: left; max-width: 800px; margin: auto;">
+                        <li class="fragment highlight-red"><strong>Identity theft</strong></li>
+                        <br>
+                        <li class="fragment highlight-red"><strong>Fraud and scams</strong></li>
+                        <br>
+                        <li class="fragment highlight-red"><strong>Reputational damage</strong></li>
+                        <br>
+                        <li class="fragment highlight-red"><strong>Visual misinformation</strong></li>
+                    </ul>
+                </section>
+
+                <section data-transition="convex" data-background-color="#0d1117">
+                    <h3>🫡OUR GOALS</h3>
+                    <ul style="text-align: left; max-width: 800px; margin: auto;">
+                        <li class="fragment fade-in">Develop a<strong style="color: #FFC0CB;"> robust</strong> and <strong style="color: #FFC0CB;">generalizable </strong>deepfake image detection system.</li>
+                        <br>
+                        <li class="fragment fade-in">Detect<strong style="color: #FFC0CB;"> subtle visual</strong> and <strong style="color: #FFC0CB;">structural inconsistencies </strong>invisible to the naked eye.</li>
+                        <br>
+                        <li class="fragment fade-in">Improve detection <strong style="color: #FFC0CB;">reliability</strong> against <strong style="color: #FFC0CB;">unseen </strong>and evolving deepfake generation techniques.</li>
+                    </ul>
+                </section>
+
+                <section data-transition="slide" data-background-image="assets/tech_lines.jpg" data-background-opacity="0.15">
+                    <h3>🧐HOW DEEPFAKE IMAGES ARE DETECTED</h3>
+                    <p>The detection system can identify visual and structural inconsistencies caused by artificial manipulation.</p>
+                       <div class="row">
+                        <div class="col-6" style="border-right: 1px solid #30363d;">
+                            <h4 style="color: #FFC0CB;" class="fragment fade-in">Common indicators include:</h4>
+                            <ul style="font-size: 0.75em;">
+                                <li class="fragment fade-in-then-semi-out"><strong>Unnatural facial features</strong></li>
+                                <li class="fragment fade-in-then-semi-out"><strong>Inconsistent lighting and shadows</strong></li>
+                                <li class="fragment fade-in-then-semi-out"><strong>Distorted textures and irregular edges</strong></li>
+                                <li class="fragment fade-in-then-semi-out"><strong>Subtle digital artifacts invisible to the naked eye</strong></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <h4 style="color: #FFC0CB;" class="fragment fade-in" data-fragment-index="5">Detection approaches are primarily based on:</h4>
+                            <ul style="font-size: 0.75em;">
+                                <li class="fragment fade-in" data-fragment-index="6"><strong>Computer Vision</strong></li>
+                                <li class="fragment fade-in" data-fragment-index="7"><strong>Digital Forensics</strong></li>
+                                <li class="fragment fade-in" data-fragment-index="8"><strong>Machine Learning models</strong>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background-color="#161b22" data-transition="fade" data-background-image="assets/data_viz.png" data-background-opacity="0.1">
+                    <h3>🔍Data Understanding: Diversity is Key</h3>
+                    <p>We combined two large Kaggle datasets for high variance.</p>
+                    <div class="row">
+                        <div class="col-6" style="border-right: 1px solid #30363d;">
+                            <h4 style="color: #FFC0CB;" class="fragment fade-in">Deepfake Image Detection Dataset</h4>
+                            <ul style="font-size: 0.75em;">
+                                <li class="fragment fade-in-then-semi-out"><strong>Focus:</strong> General Image Types (Faces, Animals, Cartoons, Environments).</li>
+                                <li class="fragment fade-in-then-semi-out"><strong>Purpose:</strong> Increase diversity beyond just human faces.</li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <h4 style="color: #FFC0CB;" class="fragment fade-in">DeepDetect-2025</h4>
+                            <ul style="font-size: 0.75em;">
+                                <li class="fragment fade-in-then-semi-out"><strong>Focus:</strong> State-of-the-Art Generative Models (StyleGAN3, DALL-E 3, Midjourney).</li>
+                                <li class="fragment fade-in-then-semi-out"><strong>Purpose:</strong> Ensure model can counter the latest tampering techniques.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="fragment highlight-green" style=" color:#FFC0CB; margin-top: 20px; font-weight: bold;">Result: High diversity, balanced class distribution, and clean data suitable for CNNs.</p>
+                </section>
+
+                <section data-transition="zoom" data-background-image="assets/neural_net_diagram.png" data-background-opacity="0.15">
+                    <h3>Model Choice: EfficientNetV2B3</h3>
+                    <p>The choice was driven by the trade-off between <strong>Accuracy and Computational Efficiency</strong>.</p>
+                    <ul style="text-align: left; max-width: 800px; margin: auto; font-size: 0.9em;">
+                        <li class="fragment fade-in"><strong>Justification:</strong> Superior balance of speed and accuracy compared to B0 (too shallow) and Xception (too slow).</li>
+                        <li class="fragment fade-in"><strong>Crucial Feature:</strong> Structurally deeper and wider, enabling it to extract <strong>fine-grained, high-resolution features</strong> critical for detecting subtle artifacts.</li>
+                    </ul>
+                </section>
+                
+                <section data-transition="slide" data-background-color="#161b22">
+                    <h3>Methodology: Mandatory Input Standardization</h3>
+                    <p>Problem: Inconsistent crops and background noise lead to failed generalization.</p>
+                    <h4 class="fragment highlight-green" style="color: #ffffff; margin-top: 30px;">Solution: MTCNN Face Cropping </h4>
+                    <ul style="text-align: left; max-width: 800px; margin: auto; font-size: 0.9em;">
+                        <li class="fragment fade-in-up">MTCNN (Multi-Task Cascaded CNN) detects the primary face.</li>
+                        <br>
+                        <li class="fragment fade-in-up">The face is cropped and resized to a consistent <strong>224x224</strong> input.</li>
+                        <br>
+                        <li class="fragment fade-in-up"><strong>Result:</strong> Forces the model to exclusively focus its capacity on the <strong>facial evidence</strong>, removing background distraction.</li>
+                    </ul>
+                </section>
+
+                <section data-transition="slide" data-background-color="#0d1117">
+                    <h3>Methodology: Two-Phase Fine-Tuning</h3>
+                    <p>Strategy to overcome the initial catastrophic failure of simple transfer learning (B0). </p>
+                    <div class="row" style="text-align: left; font-size: 0.85em;">
+                        <div class="col-6 fragment fade-in" style="border-right: 1px solid #30363d;">
+                            <h4 style="color: #ffffff;">Phase 1: Head Initialization</h4>
+                            <ul style="list-style-type: '— ';">
+                                <li><strong>Base Model:</strong> Frozen.</li>
+                                <br>
+                                <li><strong>Goal:</strong> Quickly train the new classification layers (head) using LR = 1e-4.</li>
+                            </ul>
+                        </div>
+                        <div class="col-6 fragment fade-in" data-fragment-index="1">
+                            <h4 style="color: #ffffff;">Phase 2: Deep Feature Refinement</h4>
+                            <ul style="list-style-type: '— '; font-size: 0.8em;">
+                                <li><strong>Base Model:</strong> Unfrozen (layers 20% to 100%).</li>
+                                <br>
+                                <li><strong>Goal:</strong> Adjust core features using ultra-low LR = 5e-7.</li>
+                                <br>
+                                <li><strong>Effect:</strong> Specializes the powerful ImageNet knowledge for subtle deepfake artifact detection.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-transition="zoom" data-background-image="assets/scatter_plot.png" data-background-opacity="0.3" data-background-size="70%">
+                    <h3>Core Methodology: Triplet Feature Separation</h3>
+                    <p>We solve the generalization issue using a Dual-Loss system based on Metric Learning. </p>
+                    <div class="row" style="align-items: center; font-size: 0.8em;">
+                        <div class="col-6">
+                            <ul style="font-size: 0.9em;">
+                                <li class="fragment fade-in"><strong>Goal:</strong> Achieve robust feature separation, pushing FAKE features away from REAL clusters.</li>
+                                <br>
+                                <li class="fragment fade-in"><strong>Metric Logic:</strong> The model learns based on feature distances (e.g., Triplet Loss concept).</li>
+                                <br>
+                                <li class="fragment fade-in"><strong>Result:</strong> Creates a tight, precise decision boundary that is less vulnerable to new types of deepfakes.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background-color="#1b3d16">
+                    <h3>Evaluation Metrics & Robustness</h3>
+                    <p>Deepfake detection is a <strong>high-stakes</strong> problem, requiring robust metrics.</p>
+                    <table class="fragment fade-in" style="font-size: 0.8em; margin: auto;">
+                        <thead>
+                            <tr><th>Metric</th><th>Ideal State</th><th>Purpose</th><th>Why it's Crucial</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Accuracy</td><td>~92%</td><td>Overall correctness.</td><td>Quick summary.</td></tr>
+                            <tr class="fragment highlight-green"><td><strong>Recall</strong> (Fake)</td><td><strong>> 90%</strong></td><td>Proportion of Fakes correctly identified.</td><td><strong>Critical:</strong> Minimizing False Negatives (Missed Fakes).</td></tr>
+                            <tr><td>Precision</td><td>> 80%</td><td>Fraction of predicted Fakes that were truly Fake.</td><td>Managing False Positives.</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="fragment fade-in" style="margin-top: 20px; font-size: 0.8em;"><strong>Robustness:</strong> Achieved via Aggressive Augmentation (Albumentations) to simulate real-world compression/noise.</p>
+                </section>
+
+                <section data-transition="slide" data-background-color="#0d1117">
+                    <h3>Core Finding: Deployment Calibration</h3>
+                    <ul style="text-align: left; max-width: 800px; margin: auto; font-size: 0.9em;">
+                        <li class="fragment fade-in"><strong>Problem:</strong> The final model exhibited a subtle <strong>feature separation failure</strong>, where the P(Real) scores for highly manipulative Fakes and true Reals were too close.</li>
+                        <br>
+                        <li class="fragment highlight-green"><strong>Final Solution:</strong> We implemented a reversed classification rule using a calibrated <strong>Threshold of 0.63</strong> to force correct separation in the final application.</li>
+                    </ul>
+                </section>
+
+                <section data-transition="convex" data-background-image="assets/cloud_hosting.png" data-background-opacity="0.1">
+                    <h3>Deployment Strategy: Access & Accessibility</h3>
+                    <p>Ensuring the model is available for immediate testing and future development.</p>
+                    <div class="row" style="text-align: left; font-size: 0.85em;">
+                        <div class="col-6 fragment fade-in" style="border-right: 1px solid #30363d;">
+                            <h4 style="color: #ffffff;">Local Deployment (Streamlit)</h4>
+                            <ul style="list-style-type: '— ';">
+                                <li><strong>Purpose:</strong> For rapid debugging, feature verification, and internal testing.</li>
+                                <li><strong>Technology:</strong> Python/Streamlit Framework.</li>
+                            </ul>
+                        </div>
+                        <div class="col-6 fragment fade-in" data-fragment-index="1">
+                            <h4 style="color: #ffffff;">Cloud Deployment (Hugging Face Spaces)</h4>
+                            <ul style="list-style-type: '— ';">
+                                <li><strong>Purpose:</strong> External accessibility for demonstration and lecturer use.</li>
+                                <li><strong>Technology:</strong> Flask API running on Hugging Face Spaces.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-transition="concave" data-background-color="#2c5282">
+                    <h2>🚀 Live Application Demo</h2>
+                    <p>Demonstrating the calibrated application on Hugging Face Spaces.</p>
+                    <br>
+                    <p class="fragment grow" style="font-weight: bold; font-size: 1.1em;">[Your Name] achieved the necessary feature separation, allowing Min Cong to now demonstrate the live application.</p>
+                </section>
+
+                <section data-transition="fade" data-background-color="#0d1117">
+                    <h3>Summary & Conclusion</h3>
+                    <ul style="text-align: left; max-width: 800px; margin: auto; font-size: 0.9em;">
+                        <li class="fragment fade-in"><strong>Effectiveness:</strong> The model was successfully specialized, and the data preparation (Face Cropping, Two-Phase Tuning) was confirmed as crucial.</li>
+                        <br>
+                        <li class="fragment highlight-red"><strong>Challenge:</strong> When the domain shifts to high-quality deepfakes, classification continues to struggle, proving the need for advanced techniques.</li>
+                        <br>
+                        <li class="fragment fade-in"><strong>Conclusion:</strong> More effort is needed to advance classification beyond present constraints.</li>
+                    </ul>
+                </section>
+
+                <section data-transition="slide-up" data-background-color="#0e170d">
+                    <h3>Future Directions & Enhancements</h3>
+                    <ul style="text-align: left; max-width: 800px; margin: auto; font-size: 0.8em;">
+                        <li class="fragment fade-in"><strong>Feature Separation:</strong> Improve techniques for feature separation.</li>
+                        <br>
+                        <li class="fragment fade-in"><strong>Data:</strong> Include more varied, superior deepfake datasets.</li>
+                        <br>
+                        <li class="fragment fade-in"><strong>Training:</strong> Investigate domain adaptation or adversarial training methods.</li>
+                        <br>
+                        <li class="fragment fade-in"><strong>New Models:</strong> Examine new generation models (such as diffusion-based deepfakes).</li>
+                        <br>
+                        <li class="fragment fade-in"><strong>Objective:</strong> Develop a reliable detecting mechanism to advance deepfake technologies.</li>
+                    </ul>
+                    <p style="margin-top: 50px; font-weight: bold;">Thank you.</p>
+                </section>
+                
+            </div>
+        </div>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
+            // Initialization & Config
+            Reveal.initialize({
+                // Global transition for non-specified slides
+                transition: 'fade', 
+                // Global background transition for non-specified slides
+                backgroundTransition: 'fade', 
+                
+                // CRITICAL FIX: hash: false prevents the browser from loading an old slide hash,
+                // forcing it to start at the first slide (index 0) upon opening.
+                hash: false, 
+                controls: true, 
+                progress: true, 
+                history: true,  
+                center: true,   
+
+                // Plugins
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+            });
+        </script>
+    </body>
+</html>

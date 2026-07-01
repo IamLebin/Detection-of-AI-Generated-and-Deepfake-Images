@@ -1,0 +1,21 @@
+# Ignore large zip file (5GB)
+UECS2523_ML_Assignment_Group5.zip
+
+# Ignore heavy model weights (155MB - exceeds GitHub's 100MB file limit)
+model.h5
+
+# Ignore OneNote files (heavy binary files)
+*.one
+
+# Ignore virtual environments
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# IDE / Editor configuration
+.vscode/
+.idea/
