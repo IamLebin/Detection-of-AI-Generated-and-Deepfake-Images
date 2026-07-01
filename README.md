@@ -1,4 +1,4 @@
-# Deepfake vs Real Detector (Metric Model)
+# Detection of AI-Generated and Deepfake Images (Metric Model)
 
 A Streamlit web application that uses a deep learning model to detect whether an image is Real or Fake/AI-generated.
 
