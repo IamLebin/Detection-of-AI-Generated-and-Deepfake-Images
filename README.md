@@ -1,7 +1,7 @@
 # Detection-of-AI-Generated-and-Deepfake-Images (Metric Model)
 
 A Streamlit web application that uses a deep learning model to detect whether an image is Real or Fake (AI-generated). This project was developed as part of a Machine Learning course assignment.
-
+Demo : https://huggingface.co/spaces/IamLebin/V2B3_Deepfake_Detector
 ---
 
 ## 👥 Group Members
